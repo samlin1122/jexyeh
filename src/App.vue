@@ -1,17 +1,53 @@
 <template lang="pug">
-div
-  router-view
+Header
+router-view
+#top.cursor-pointer(@click='scrollTop')
+Footer(v-if='!$route.path.includes("project")')
 </template>
 
-<script setup></script>
+<script>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+export default {
+  name: "App",
+  components: { Header, Footer },
+  watch: {
+    $route: {
+      handler() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      },
+      immediate: true,
+      deep: true,
+    },
+  },
+  methods: {
+    scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+#top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-image: url("@/assets/images/置頂箭頭.png");
+  background-position: center;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  z-index: 5;
+  &:hover {
+    background-image: url("@/assets/images/置頂箭頭 (Hover State).png");
+  }
 }
 </style>

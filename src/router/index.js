@@ -10,6 +10,28 @@ const routes = [
     path: '/about',
     name: 'About',
     component: () => import('@/views/About.vue')
+  },
+  {
+    path: '/project',
+    name: 'Project',
+    component: () => import('@/views/Project/index.vue'),
+    children: [
+      {
+        path: "TaiwaneseCup",
+        name: "TaiwaneseCup",
+        component: () => import('@/views/Project/TaiwaneseCup.vue'),
+      },
+      {
+        path: "WebPage",
+        name: "WebPage",
+        component: () => import('@/views/Project/WebPage.vue'),
+      },
+      {
+        path: "Accessories",
+        name: "Accessories",
+        component: () => import('@/views/Project/Accessories.vue'),
+      },
+    ]
   }
 ]
 

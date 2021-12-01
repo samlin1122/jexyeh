@@ -12,7 +12,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
+    "autoprefixer": "^10.4.0",
     "dart-sass": "^1.25.0",
+    "postcss": "^8.3.11",
     "pug": "^3.0.2",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
