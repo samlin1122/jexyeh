@@ -1,11 +1,11 @@
 <template lang="pug">
 footer.bg-black
-  .w-full.flex.justify-between.items-center
-    .copyright
-      p.text-white All content and images Copyright © 2021 Jex Yeh
-    .social.flex.justify-between.items-center
-      img.cursor-pointer(v-for='item in socialList', :key='item.img', :alt="item.img", :src="getImageUrl(item.img)")
-    .menu.flex.justify-end.items-center
+  .w-full.flex.flex-col-reverse.justify-between.items-center(class="md:flex-row")
+    .copyright(class='md:w-2/6')
+      p.text-xs.text-white.whitespace-nowrap All content and images Copyright © 2021 Jex Yeh
+    a.social.flex.justify-center.items-center.w-full.mb-6(class='md:mb-0 md:justify-between')
+      img.mx-6.cursor-pointer(v-for='item in socialList', :key='item.key', :alt="item.key", :src="getImageUrl(item.key)", @click='href(item)')
+    .menu.flex.justify-end.items-center.hidden(class='md:flex md:w-2/6')
       p.mx-6.text-white.cursor-pointer(v-for='item in menuList', :key='item.name', @click='goTo(item)') {{item.name}}
   transition(name="fade")
     Contact(v-if='ContactShow', @close='ContactShow = false')
@@ -27,6 +27,15 @@ export default {
   data: () => ({
     ContactShow: false,
   }),
+  methods: {
+    href({ key, url }) {
+      if (key === "mail") {
+        window.open(`mailto:${url}`);
+      } else {
+        window.open(url);
+      }
+    },
+  },
 };
 </script>
 
@@ -38,10 +47,6 @@ footer {
   img {
     width: 20px;
   }
-  .copyright,
-  .menu {
-    width: 35%;
-  }
   .menu {
     p {
       transition: all 0.5s;
@@ -51,7 +56,9 @@ footer {
     }
   }
   .social {
-    width: 10%;
+    @media (min-width: 768px) {
+      width: 10%;
+    }
   }
 }
 </style>

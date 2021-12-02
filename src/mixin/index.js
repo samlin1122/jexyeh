@@ -4,28 +4,28 @@ const mixin = {
     menuList: [
       { name: "Work", url: "Home" },
       { name: "About", url: "About" },
-      { name: "Contact", url: "" },
+      { name: "Contact" },
     ],
     typeList: [
       {
         name: "UI/UX Designer",
         key: "UU",
-        image: "LP-1照片",
+        image: "LP1-Pic@2x",
       },
       {
         name: "Apparel & Accessories Designer",
         key: "AA",
-        image: "LP-2照片",
+        image: "LP2-Pic@2x",
       },
       {
         name: "Freediving Instructor",
         key: "FI",
-        image: "LP-3照片",
+        image: "LP3-Pic@2x",
       },
     ],
     socialList: [
-      { img: 'linkedin', url: "" },
-      { img: 'mail', url: "" },
+      { key: 'linkedin', url: "http://linkedin.com/in/chun-chuan-yeh-118ba5112" },
+      { key: 'mail', url: "xgodzlighttk@gmail.com" },
     ],
   }),
   methods: {

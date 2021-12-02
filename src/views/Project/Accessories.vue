@@ -1,8 +1,9 @@
 <template lang="pug">
 div(v-for='item in data')
-  img.w-screem(:src='getImageUrl(item.url)')
-  p.text-center.text-blue.font-bold.text-3xl.mb-8.mt-12 {{item.title}}
-  p.text-center.text-gray.mb-10 {{item.subtitle}}
+  img.w-screen(:src='getImageUrl(item.url)')
+  .base
+    p.text-left.text-blue.font-bold.text-2xl.mb-6.mt-12(class='md:text-center') {{item.title}}
+    p.text-left.text-gray.font-light.text-base.mb-10(class='md:text-center') {{item.subtitle}}
 </template>
 
 <script>

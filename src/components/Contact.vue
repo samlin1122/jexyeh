@@ -7,7 +7,7 @@
         img.mr-6(:alt='item.content', :src='getImageUrl(item.img)')
         p.text-white {{item.content}}
     
-    p.text-white.font-bold.text-7xl.my-10 Let’s Chat
+    p.text-white.font-bold.text-7xl.my-10.whitespace-nowrap Let’s Chat
     p#email.text-white.border-2.border-white.border-solid.rounded-full.px-10.py-3.cursor-pointer(class='hover:bg-white hover:text-black', @click='copyToClipBoard') xgodzlighttk@gmail.com
     p#copied.text-white.font-bold.mt-6 Link copied
 
@@ -63,6 +63,14 @@ export default {
       top: calc(50vh - 125px);
       img {
         width: 32px;
+      }
+      @media (max-width: 767px) {
+        left: unset;
+        top: unset;
+        bottom: 30px;
+        img {
+          width: 18px;
+        }
       }
     }
   }

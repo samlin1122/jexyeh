@@ -1,8 +1,11 @@
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx,html}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        dinpro: 'DINPro'
+      },
       backgroundColor: {
         gray: '#707070',
         blue: '#1B4167'
