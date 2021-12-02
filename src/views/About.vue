@@ -89,8 +89,8 @@ export default {
 
 <style lang="scss" scoped>
 #about {
-  height: calc(100vh - 90px);
-  max-height: calc(100vh - 90px);
+  height: 100vh;
+  max-height: 100vh;
   min-height: 432px;
   padding-top: 90px;
   @media (max-width: 767px) {
