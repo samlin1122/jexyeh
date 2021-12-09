@@ -1,31 +1,50 @@
 <template lang="pug">
-#banner.relative(v-if='selectType')
+#banner.relative
   .types.absolute.text-right.transform.-rotate-90.origin-bottom-left.z-10
-    p.text-xs.whitespace-nowrap(v-for='type in typeList', :key='type.key', :class='{ "font-bold" : (selectType === type), "text-gray-light": (selectType !== type)}') {{ type.name }}
-  
-  //- desktop
-  .relative(class='md:block')
-    img.w-screen.selfic(:alt="selectType.key", :src='getImageUrl(`${isMobile ? "IOS" : "Web"}-LP-${selectType.image}@2x`)')
-    .absolute.mr-8.text-content(:class='selectType.key')
-      p.text-xl Hi There,
-      p.text-6xl.font-bold.whitespace-nowrap.tracking-tighter I am Jex
-      p.text-xl.font-light.whitespace-pre-wrap(class='md:whitespace-nowrap') {{ selectType.name }}
-
-  .dot-wrapper.absolute.flex.items-center.justify-between
-    .dot.cursor-pointer.rounded-full(v-for='type in typeList', :key='type.key', :class='{ "is-active" : selectType === type}', @click=' selectType = type ')
+    p.text-xs.whitespace-nowrap(v-for='(type, index) in typeList', :key='type.key', :class='{ "font-bold" : (active === index), "text-gray-light": (active !== index)}') {{ type.name }}
+  Carousel
+    Slide(v-for='type in typeList', :key='type.key')
+      img.w-screen.selfic(:alt="type.key", :src='getImageUrl(`${isMobile ? "IOS" : "Web"}-LP-${type.image}@2x`)')
+      .absolute.mr-8.text-content(:class='type.key')
+        p.text-xl Hi There,
+        p.text-6xl.font-bold.whitespace-nowrap.tracking-tighter I am Jex
+        p.text-xl.font-light.whitespace-pre-wrap(class='md:whitespace-nowrap') {{ type.name }}
+    template(#addons)
+      Pagination
 
 </template>
 
 <script>
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination } from "vue3-carousel";
+
 export default {
   name: "banner",
+  components: { Carousel, Slide, Pagination },
   data() {
     return {
-      selectType: null,
+      active: 0,
     };
   },
   mounted() {
-    this.selectType = this.typeList[0];
+    document.addEventListener("transitionend", () => this.paginationWatcher());
+  },
+  beforeDestroy() {
+    document.removeEventListener("transitionend", this.paginationWatcher());
+  },
+  methods: {
+    paginationWatcher() {
+      let buttons = document.querySelectorAll(".carousel__pagination-button");
+      buttons.forEach((e, i) => {
+        if (
+          Array.apply(null, e.classList).some(
+            (el) => el === "carousel__pagination-button--active"
+          )
+        ) {
+          this.active = i;
+        }
+      });
+    },
   },
 };
 </script>
@@ -54,20 +73,23 @@ export default {
       left: 75%;
     }
   }
-
-  .dot-wrapper {
+  ::v-deep(.carousel__pagination) {
     bottom: 24px;
-    width: 60px;
-    left: calc(50% - 30px);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     @media (max-width: 767px) {
       bottom: 39%;
     }
-    .dot {
-      width: 10px;
-      height: 10px;
-      background-color: #a6a6a6;
-      &.is-active {
-        background-color: #333333;
+    .carousel__pagination-item {
+      .carousel__pagination-button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #a6a6a6;
+        &--active {
+          background-color: #333333;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 <template lang="pug">
 #about.relative
   .types.absolute.text-right.transform.-rotate-90.origin-bottom-left.z-10
-    p.text-xs.whitespace-nowrap(v-for='type in typeList', :key='type.key', :class='{ "font-bold" : type.key === "UU"}') {{ type.name }}
+    p.text-xs.whitespace-nowrap(v-for='type in typeList', :key='type.key', :class='{ "font-bold" : type.key === "UU", "text-gray-light": type.key !== "UU"}') {{ type.name }}
 
   //- desktop
   .relative

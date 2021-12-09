@@ -1,7 +1,7 @@
 <template lang="pug">
 #menu.fixed.inset-0.z-20.bg-black
   .base.text-right
-    p.font-bold.text-white.text-6xl.py-6(v-for='item in menuList', @click='menuSelected(item)') {{item.name}}
+    p.font-bold.text-white.text-6xl.py-6.cursor-pointer(v-for='item in menuList', @click='menuSelected(item)') {{item.name}}
 </template>
 
 <script>

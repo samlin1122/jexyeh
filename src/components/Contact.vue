@@ -3,7 +3,13 @@
   img.cursor-pointer.icon-close.absolute.z-20(alt='close', :src='getImageUrl("Contact-叉叉-btn")', @click='$emit("close")')
   .base.relative.h-screen.bg-center.bg-no-repeat.bg-contain.flex.flex-col.items-center.justify-center
     .contact-detail.absolute
-      .flex.items-center.py-4(v-for='(item,index) in contact', :class='{ [item.title] : true, "cursor-pointer": index == 2 }', class='md:py-6', :data-index='index')
+      .flex.items-center.py-4(
+        v-for='(item,index) in contact'
+        :class='{ [item.title] : true, "cursor-pointer": index == 2 }'
+        class='md:py-6'
+        :data-index='index'
+        @click="open(index == 2)"
+        )
         img.mr-6(:alt='item.content', :src='getImageUrl(item.img)')
         p.text-white.text-gray-light {{item.content}}
         img.arrow(v-if='index == 2', :src='getImageUrl("Web-Contact-Resume-Arrow@2x")')
@@ -43,6 +49,11 @@ export default {
         .catch((err) => {
           alert("Something went wrong", err);
         });
+    },
+    open(boo) {
+      if (boo) {
+        window.open("https://www.cakeresume.com/chun-chuan-yeh");
+      }
     },
   },
 };

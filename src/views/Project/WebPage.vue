@@ -14,7 +14,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
       li.text-gray.font-light(v-if='item.list', v-for='list in item.list') {{list}}
   .Divide.my-10
   .part-3.flex
-    .left(class='w-1/2')
+    .left.pr-4(class='w-1/2')
       p.text-2xl.font-bold.text-blue.mb-3 任務-Role
       p.text-gray.font-light(v-for='item in part3[0]') {{item}}
     .right(class='w-1/2')

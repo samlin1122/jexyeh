@@ -1,7 +1,6 @@
 <template lang="pug">
 Header
-.HH
-  router-view
+router-view
 #top.cursor-pointer.hidden(@click='scrollTop')
 Footer(v-if='!$route.path.includes("project")')
 </template>
@@ -58,11 +57,6 @@ export default {
   z-index: 5;
   &:hover {
     background-image: url("@/assets/images/置頂箭頭 (Hover State).png");
-  }
-}
-.HH {
-  @media (max-width: 767px) {
-    padding-top: 90px;
   }
 }
 </style>

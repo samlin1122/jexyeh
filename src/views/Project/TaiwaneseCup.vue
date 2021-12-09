@@ -34,7 +34,7 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
       div
         p.text-3xl.text-white {{item.title}}
         p.text-blue {{item.subtitle}}
-      img.w-5(:src='getImageUrl("Work-6")')
+      img.w-5.transition(:src='getImageUrl("Work-1-Menu-Arrow@2x")')
 .h-20
 #Research.w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
@@ -236,7 +236,7 @@ img.w-screen(:src='getImageUrl("Work-1-線框稿")')
     p.text-2xl.font-bold.text-blue.mb-4(class='md:text-4xl') Logo
     p 以水上運動與競技領域的風格角度，藉由簡潔有力的字體與動感流線的漸層色系，設計台灣盃賽事的主副Logo
 .base
-  img.mx-auto(:src='getImageUrl("Work-1-Logo")', style='maxWidth:440px')
+  img.mx-auto.color-plan(:src='getImageUrl("Work-1-Logo")')
   .Divide.my-10
   .bg-white.text-left(class='md:text-center')
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 色彩計畫
@@ -519,6 +519,9 @@ export default {
   }
 }
 .menu:hover {
-  border-bottom: 2px solid #707070;
+  border-bottom-width: 2px;
+  img {
+    transform: scale(1.1);
+  }
 }
 </style>
