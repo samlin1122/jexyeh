@@ -15,6 +15,8 @@ pre {
 body,
 p {
   margin: 0;
+  color: #000000;
+  line-height: 1.5;
 }
 
 header,
@@ -50,8 +52,8 @@ footer {
   top: 340px;
   width: 200px;
   @media (max-width: 767px) {
-    left: 48px;
-    top: 200px;
+    left: 62px;
+    top: 85%;
   }
 }
 

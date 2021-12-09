@@ -2,7 +2,7 @@
 Header
 .HH
   router-view
-#top.cursor-pointer(@click='scrollTop')
+#top.cursor-pointer.hidden(@click='scrollTop')
 Footer(v-if='!$route.path.includes("project")')
 </template>
 
@@ -24,6 +24,15 @@ export default {
       immediate: true,
       deep: true,
     },
+  },
+  mounted() {
+    document.addEventListener("scroll", () => {
+      if (window.scrollY > 60) {
+        document.getElementById("top").classList.remove("hidden");
+      } else {
+        document.getElementById("top").classList.add("hidden");
+      }
+    });
   },
   methods: {
     scrollTop() {

@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "vite build & gcloud app deploy"
+    "deploy": "vite build && gcloud app deploy"
   },
   "dependencies": {
     "vue": "^3.2.16",

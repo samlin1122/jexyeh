@@ -2,20 +2,20 @@
 #collection.cursor-pointer
   .item.relative(@click='$router.push({ name : "TaiwaneseCup"})')
     img.bg-image(alt="Vue logo" src="@/assets/images/台灣盃.png")
-    .content.absolute.inset-0
+    .content.absolute.inset-0.TaiwaneseCup
         p.text-white.text-2xl.font-bold 台灣盃深度賽
         p.text-white UI/UX | Branding | Product
         p.text-white Mobile
   .portfolio.items-center.w-full(class='md:flex')
     .item.relative.w-full(class='md:w-1/2', @click='$router.push({ name : "WebPage"})')
       img.bg-image(alt="Vue logo" src="@/assets/images/Work-2-頁首大圖.png")
-      .content.absolute.inset-0
+      .content.absolute.inset-0.WebPage
         p.text-white.text-2xl.font-bold 個人網頁
         p.text-white UI/UX
         p.text-white Desktop | Mobile
     .item.relative.w-full(class='md:w-1/2', @click='$router.push({ name : "Accessories"})')
       img.bg-image(alt="Vue logo" src="@/assets/images/服飾配件.png")
-      .content.absolute.inset-0
+      .content.absolute.inset-0.Accessories
         p.text-white.text-2xl.font-bold 服飾配件
         p.text-white Branding | Product
         p.text-white Desktop
@@ -86,5 +86,14 @@ export default {
       }
     }
   }
+}
+.TaiwaneseCup:hover p {
+  color: #1b4167;
+}
+.WebPage:hover p {
+  color: #73716b;
+}
+.Accessories:hover p {
+  color: #4f5142;
 }
 </style>

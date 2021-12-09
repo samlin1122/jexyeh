@@ -20,6 +20,8 @@ module.exports = {
         "gray-light": '#A8A8A8',
         'gray-bg': '#707070',
         blue: '#1B4167',
+        'white-hover': '#B4B5AC',
+        'black-hover': '#1B4167',
       }
     },
   },

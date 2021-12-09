@@ -3,13 +3,13 @@
   img.cursor-pointer.icon-close.absolute.z-20(alt='close', :src='getImageUrl("Contact-叉叉-btn")', @click='$emit("close")')
   .base.relative.h-screen.bg-center.bg-no-repeat.bg-contain.flex.flex-col.items-center.justify-center
     .contact-detail.absolute
-      .flex.items-center.py-6(v-for='item in contact')
+      .flex.items-center.py-4(v-for='(item,index) in contact', :class='{ [item.title] : true, "cursor-pointer": index == 2 }', class='md:py-6', :data-index='index')
         img.mr-6(:alt='item.content', :src='getImageUrl(item.img)')
-        p.text-white {{item.content}}
-    
-    p.text-white.font-bold.text-7xl.my-10.whitespace-nowrap Let’s Chat
-    p#email.text-white.border-2.border-white.border-solid.rounded-full.px-10.py-3.cursor-pointer(class='hover:bg-white hover:text-black', @click='copyToClipBoard') xgodzlighttk@gmail.com
-    p#copied.text-white.font-bold.mt-6 Link copied
+        p.text-white.text-gray-light {{item.content}}
+        img.arrow(v-if='index == 2', :src='getImageUrl("Web-Contact-Resume-Arrow@2x")')
+    .absolute.email
+      p#email.text-white.border-2.border-white.border-solid.rounded-full.px-10.py-3.cursor-pointer(class='hover:bg-white hover:text-black', @click='copyToClipBoard') xgodzlighttk@gmail.com
+      p#copied.text-white.font-bold.text-center.mt-6.text-xs Link copied
 
 </template>
 
@@ -18,9 +18,9 @@ export default {
   name: "contact",
   data: () => ({
     contact: [
-      { content: "+886-961-069-690", img: "Contact-手機-icon" },
-      { content: "Taipei, Taiwan", img: "Contact-地址-icon" },
-      { content: "View my resume", img: "Contact-履歷-icon" },
+      { title: "phone", content: "+886-961-069-690", img: "Contact-手機-icon" },
+      { title: "address", content: "Taipei, Taiwan", img: "Contact-地址-icon" },
+      { title: "resume", content: "View my resume", img: "Contact-履歷-icon" },
     ],
   }),
   created() {
@@ -57,20 +57,52 @@ export default {
   }
   .base {
     background-image: url("@/assets/images/背景icon底圖-黑底.png");
+    @media (max-width: 767px) {
+      background-image: url("@/assets/images/iOS-Contact@3x.png");
+    }
     max-width: unset;
     .contact-detail {
       left: 32px;
       top: calc(50vh - 125px);
-      img {
-        width: 32px;
-      }
       @media (max-width: 767px) {
         left: unset;
         top: unset;
-        bottom: 30px;
+        bottom: 60px;
+      }
+      > .flex[data-index="2"]:hover {
+        p {
+          color: white;
+        }
+        .arrow {
+          content: url("@/assets/images/Web-Contact-Resume-Arrow-Hover@2x.png");
+        }
+      }
+      .phone,
+      .resume {
+        img {
+          width: 22px;
+          height: 22px;
+          @media (max-width: 767px) {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+      .address {
         img {
           width: 18px;
+          height: 24px;
+          @media (max-width: 767px) {
+            width: 15px;
+            height: 20px;
+          }
         }
+      }
+
+      .arrow {
+        margin-left: 6px;
+        width: auto !important;
+        height: 100% !important;
       }
     }
   }
@@ -80,6 +112,15 @@ export default {
   opacity: 0;
   &.active {
     opacity: 1;
+  }
+}
+#email {
+  font-size: 14px;
+}
+.email {
+  bottom: 23%;
+  @media (max-width: 767px) {
+    bottom: 36%;
   }
 }
 </style>

@@ -4,7 +4,7 @@ footer.bg-black
     .copyright(class='md:w-2/6')
       p.text-xs.text-white.whitespace-nowrap All content and images Copyright © 2021 Jex Yeh
     a.social.flex.justify-center.items-center.w-full.mb-6(class='md:mb-0 md:justify-between')
-      img.mx-6.cursor-pointer(v-for='item in socialList', :key='item.key', :alt="item.key", :src="getImageUrl(item.key)", @click='href(item)')
+      img.mx-4.cursor-pointer(v-for='item in socialList', :key='item.key', :alt="item.key", :src="getImageUrl(item.key)", @click='href(item)')
     .menu.flex.justify-end.items-center.hidden(class='md:flex md:w-2/6')
       p.mx-6.text-white.cursor-pointer(v-for='item in menuList', :key='item.name', @click='goTo(item)') {{item.name}}
   transition(name="fade")
@@ -49,13 +49,20 @@ footer {
   }
   .menu {
     p {
-      transition: all 0.5s;
+      transition: all 0.3s;
       &:hover {
         transform: scale(1.2);
+        color: #b4b5ac;
       }
     }
   }
   .social {
+    img:first-child:hover {
+      content: url("@/assets/images/linkedin (Hover State).png");
+    }
+    img:last-child:hover {
+      content: url("@/assets/images/mail (Hover State).png");
+    }
     @media (min-width: 768px) {
       width: 10%;
     }

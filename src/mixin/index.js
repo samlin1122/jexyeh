@@ -10,17 +10,17 @@ const mixin = {
       {
         name: "UI/UX Designer",
         key: "UU",
-        image: "LP1-Pic@2x",
+        image: "1",
       },
       {
         name: "Apparel & Accessories Designer",
         key: "AA",
-        image: "LP2-Pic@2x",
+        image: "2",
       },
       {
         name: "Freediving Instructor",
         key: "FI",
-        image: "LP3-Pic@2x",
+        image: "3",
       },
     ],
     socialList: [
@@ -28,6 +28,11 @@ const mixin = {
       { key: 'mail', url: "xgodzlighttk@gmail.com" },
     ],
   }),
+  computed: {
+    isMobile () {
+      return window.innerWidth < 767
+    }
+  },
   methods: {
     getImageUrl (name) {
       return new URL(`../assets/images/${name}.png`, import.meta.url).href;

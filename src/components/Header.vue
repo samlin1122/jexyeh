@@ -1,10 +1,14 @@
 <template lang="pug">
 header.fixed.flex.items-center.justify-between.w-full.shadow-lg.z-30.bg-white(class='md:shadow-none md:absolute md:bg-transparent')
-  router-link.arrow.cursor-pointer(v-if='$route.path.includes("project")', :to="{ name: 'Home' }")
-  router-link.logo(v-else, :to="{ name: 'Home' }", :class='{ "opacity-0" : $route.path.includes("project")}')
+  router-link.arrow.cursor-pointer.fixed.z-10(v-if='$route.path.includes("project")', :to="{ name: 'Home' }")
+  router-link.logo(:to="{ name: 'Home' }", :class='{ "opacity-0" : $route.path.includes("project")}')
     img(:src='getImageUrl("LOGO")')
   .item-wrapper.hidden.items-center.justify-between(class='md:flex')
-    p.mx-6.cursor-pointer(v-for='item in menuList', :key='item.name', @click='goTo(item)') {{item.name}}
+    p.mx-4.cursor-pointer(
+      v-for='item in menuList', :key='item.name', @click='goTo(item)'
+      :class='{ other : ($route.name==="TaiwaneseCup" || $route.name==="Accessories") }'
+      class='hover:text-blue'
+      ) {{item.name}}
   img.menu-icon.cursor-pointer(:src='getImageUrl(MenuShow ? "Menu-叉叉@3x" : "選項icon@3x")', @click='MenuShow = !MenuShow', class='md:hidden')
 
   transition(name="fade")
@@ -51,10 +55,14 @@ header {
     &:hover {
       background-image: url("@/assets/images/返回箭頭-btn (Hover State).png");
     }
+    @media (max-width: 767px) {
+      width: 66px;
+      height: 66px;
+    }
   }
   .item-wrapper {
     p {
-      transition: all 0.5s;
+      transition: all 0.3s;
       &:hover {
         transform: scale(1.2);
       }
@@ -65,6 +73,12 @@ header {
   &-icon {
     width: 50px;
     object-fit: cover;
+  }
+}
+.other {
+  color: white;
+  &:hover {
+    color: #b4b5ac;
   }
 }
 </style>

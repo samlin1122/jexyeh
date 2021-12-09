@@ -2,14 +2,14 @@
 img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
 .base.py-20
   .part-1.text-left.pb-10(class='md:text-center')
-    p.text-4xl.font-bold.text-blue.mb-3 Taiwanese Cup#[br]台灣盃自由潛水深度賽
+    p.text-2xl.font-bold.text-blue.mb-3(class='md:text-4xl') Taiwanese Cup#[br]台灣盃自由潛水深度賽
     p.text-gray 台灣盃深度賽為台灣第一場自由潛水深度賽#[br]是由意潛(One Freediving)與女子的海(Ms. Ocean)，於2021年3月24-25兩天在小琉球共同主辦#[br]過往受限台灣海域深度、洋流及法規等問題，皆以泳池賽的舉辦為主，此次主辦第一屆深度賽更顯難能可貴
   .Divide.mt-10.mb-2
   .mt-8(class='md:flex')
     .part-2.flex.flex-col.justify-between.text-left(class=' md:w-1/2')
-      .pr-10.mb-8(v-for='item in part2', class='md:mb-0')
+      .mb-8(v-for='item in part2', class='md:mb-0 md:pr-10')
         .w-full.text-center(v-if='item.isButton', class='md:text-left')
-          button.border-2.border-blue.rounded-full.text-blue.mx-auto.mb-8(class='hover:bg-blue hover:text-white') {{item.title}}
+          button.border-2.border-blue.rounded-full.text-blue.mx-auto.mb-8.text-xs(class='hover:bg-blue hover:text-white', @click='PrototypeLink') {{item.title}}
         p.text-2xl.font-bold.text-blue.mb-3(v-else) {{item.title}}
         p.text-gray.font-light(v-if='item.describe') {{item.describe}}
         li.text-gray.font-light(v-if='item.list', v-for='list in item.list') {{list}}
@@ -18,31 +18,37 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
       .mb-8.hidden(v-for='item in part3', class='md:block')
         p.text-2xl.font-bold.text-blue.mb-3 {{item.title}}
         p.text-gray.font-light(v-for='list in item.list') {{list}}
-      div(class='w-1/2 md:hidden')
+      .pr-10(class='w-1/2 md:hidden')
         p.text-2xl.font-bold.text-blue.mb-3 {{part3[0].title}}
         p.text-gray.font-light(v-for='list in part3[0].list') {{list}}
-      div(class='w-1/2 md:hidden')
-        .mb-3(v-for='(item, index) in part3')
-          p.text-2xl.font-bold.text-blue.mb-3(v-if='index') {{item.title}}
-          p.text-gray.font-light(v-for='list in item.list', v-if='index') {{list}}
+      .flex.flex-col.justify-between(class='w-1/2 md:hidden')
+        .mb-3
+          p.text-2xl.font-bold.text-blue.mb-3 {{part3[1].title}}
+          p.text-gray.font-light(v-for='list in part3[1].list') {{list}}
+        .mb-3.mt-14
+          p.text-2xl.font-bold.text-blue.mb-3 {{part3[2].title}}
+          p.text-gray.font-light(v-for='list in part3[2].list') {{list}}
 .w-screen.bg-black
   .base.py-20.flex.flex-wrap.items-center.justify-between
-    a.flex.items-center.justify-between.border-b.border-gray.pb-8.mb-8.w-full(v-for='item in hash', class='md:w-2/5', :href='`#${item.id}`')
+    a.menu.flex.items-center.justify-between.border-b.border-gray.pb-8.mb-8.w-full(v-for='item in hash', class='md:w-2/5', :href='`#${item.id}`')
       div
         p.text-3xl.text-white {{item.title}}
         p.text-blue {{item.subtitle}}
       img.w-5(:src='getImageUrl("Work-6")')
-
+.h-20
 #Research.w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-white 市場研究與競品分析
+    p.text-2xl.font-bold.text-white(class='md:text-4xl') 市場研究與競品分析
     p.text-2xl.font-bold.text-gray-light.mb-4 Market Research and Competitor Analysis
-    p.text-white.leading-5 官網架設的目的為避免社群平台易產生的資訊覆蓋與準確性問題，並考量方便賽事、選手、過往紀錄等資訊的統整分類#[br]初步針對自由潛水賽事及型態相近的網站做研究與分析
+    p.text-white 官網架設的目的為避免社群平台易產生的資訊覆蓋與準確性問題，並考量方便賽事、選手、過往紀錄等資訊的統整分類#[br]初步針對自由潛水賽事及型態相近的網站做研究與分析
 
 .w-screen.bg-white.flex.flex-row-reverse.mt-20
   img(v-for='item in 4', :src='getImageUrl(`Work-${item}`)',class='w-1/4')
 .base.bg-white.mt-10
-  li.font-light.mb-8(v-for='item in AnalysisLi', class='md:mb-0') {{item}}
+  li.font-light.mb-8(v-for='item in AnalysisLi', class='md:mb-0') {{item[0]}}
+    span(v-if='isMobile') #[br]
+    span(else) ，
+    span {{item[1]}}
   .Divide.my-10
   .flex.flex-wrap.justify-around
     div.mb-5.w-full(v-for="item in AnalysisData1", class='md:w-5/12')
@@ -56,15 +62,15 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
   .flex.justify-around.flex-col(class='md:flex-row')
     div.w-full.mb-8(v-for='item in AnalysisData2', class='md:w-5/12 md:mb-0')
       p.font-bold.text-2xl.text-blue {{item.title}}
-      p.font-bold.text-xl.text-gray-light.mb-8 {{item.subtitle}}
+      p.font-bold.text-xl.text-gray.mb-8 {{item.subtitle}}
       p.text-gray.font-light.mb-8(v-for='content in item.content') {{content}}
       li.font-bold(v-for='list in item.list') {{list}}
 
 #User.w-screen.bg-blue.text-left.mt-20.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-white 使用者訪談
+    p.text-2xl.font-bold.text-white(class='md:text-4xl') 使用者訪談
     p.text-2xl.font-bold.text-gray-light.mb-4 User Interviews
-    p.text-white.leading-5 建立一個訪談計畫，針對共9位自由潛水相關人員進行一對一的訪談#[br]以各種不同角色面向的需求角度，去調查了解網站上需對應及呈現的功能資訊#[br]就競品網站內容及對整體架構的假設下，設定了相關提問條件情境及問題進行訪談調查：
+    p.text-white 建立一個訪談計畫，針對共9位自由潛水相關人員進行一對一的訪談#[br]以各種不同角色面向的需求角度，去調查了解網站上需對應及呈現的功能資訊#[br]就競品網站內容及對整體架構的假設下，設定了相關提問條件情境及問題進行訪談調查：
 
 .base.bg-white.py-20
   .flex.flex-col-reverse(class='md:flex-row')
@@ -89,22 +95,20 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
 
 .w-screen.bg-white.text-left.pb-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 訪談研究
-    p.text-2xl.font-bold.text-gray-light.mb-4 Interviews Research
-    p.leading-5 依造訪談結果綜合各角色依自身使用情境的模擬及過往經驗，整理歸納出三大需求及反饋方向#[br]並列舉關鍵功能及資訊項目以做為後續規劃架構的基礎依據
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 訪談研究
+    p.text-2xl.font-bold.text-gray.mb-4 Interviews Research
+    p 依造訪談結果綜合各角色依自身使用情境的模擬及過往經驗，整理歸納出三大需求及反饋方向#[br]並列舉關鍵功能及資訊項目以做為後續規劃架構的基礎依據
 
-//- .w-screen.bg-blue.p-40.special
 img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
-//-   p 123
-      .png
+
 #Persona.w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 人物誌
-    p.text-2xl.font-bold.text-gray-light.mb-4 Persona
-    p.leading-5 藉由訪談研究的結果建構出三個人物誌角色，並模擬其於賽事資訊相關的對應需求#[br]現行條件上將會遇到的難題，以及官網於架構功能上將解決的目標任務
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 人物誌
+    p.text-2xl.font-bold.text-gray.mb-4 Persona
+    p 藉由訪談研究的結果建構出三個人物誌角色，並模擬其於賽事資訊相關的對應需求#[br]現行條件上將會遇到的難題，以及官網於架構功能上將解決的目標任務
 
-.base.bg-white.py-20.justify-between.hidden
-  div(v-for='item in PersonaData', class='w-1/4 md:flex')
+.base.bg-white.pb-20.justify-between.hidden(class='md:flex')
+  div(v-for='item in PersonaData', class='w-1/4')
     img.mb-6(:src='getImageUrl(item.img)')
     p.font-bold.leading-8 角色：
       span.font-light {{item.character}}
@@ -129,10 +133,10 @@ img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
     p.font-bold.leading-8 目標：
       span.font-light {{item.target}}
 
-.base.bg-white.py-20(class='md:hidden')
+.base.bg-white.pb-20(class='md:hidden')
   .w-full(v-for='item in PersonaData')
     .flex.my-8
-      img(:src='getImageUrl(item.img)', class='w-1/2')
+      img.object-contain(:src='getImageUrl(item.img)', class='w-1/2')
       .ml-10
         p.font-bold.leading-8 角色：
           span.font-light {{item.character}}
@@ -160,82 +164,84 @@ img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
 
 #Information.w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-white 資訊架構
+    p.text-2xl.font-bold.text-white(class='md:text-4xl') 資訊架構
     p.text-2xl.font-bold.text-gray-light.mb-4 Information Architecture
-    p.text-white.leading-5 根據市場與品牌自身的各項分析與訪談研究的見解結果，透過人物誌建構出相關的需求與目標#[br]將相關資訊及對應的功能進行統整分類及組織管理的架構設定，標記出使用導航上的功能選單以便釐清整體的脈絡
+    p.text-white 根據市場與品牌自身的各項分析與訪談研究的見解結果，透過人物誌建構出相關的需求與目標#[br]將相關資訊及對應的功能進行統整分類及組織管理的架構設定，標記出使用導航上的功能選單以便釐清整體的脈絡
 
 .w-screen.bg-white.text-center.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 站點地圖
-    p.text-2xl.font-bold.text-gray-light.mb-4 Sitemap
-    p.leading-5 創造站點地圖可直觀的確認整體的內容架構及佈局邏輯
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 站點地圖
+    p.text-2xl.font-bold.text-gray.mb-4 Sitemap
+    p 創造站點地圖可直觀的確認整體的內容架構及佈局邏輯
 
 img.base.w-full.mb-20(:src='getImageUrl("Work-1-站點地圖")')
 
 #Interaction.w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-white 互動設計
+    p.text-2xl.font-bold.text-white(class='md:text-4xl') 互動設計
     p.text-2xl.font-bold.text-gray-light Interaction Design
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 流程圖
-    p.text-2xl.font-bold.text-gray-light.mb-4 Flow Chart
-    p.leading-5 接續以流程圖來釐清達成需求目標流程上的步驟及程序，同步設定並檢驗使用者在操作上將面臨相關的功能狀態
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 流程圖
+    p.text-2xl.font-bold.text-gray.mb-4 Flow Chart
+    p 接續以流程圖來釐清達成需求目標流程上的步驟及程序，同步設定並檢驗使用者在操作上將面臨相關的功能狀態
 .base
   img(:src='getImageUrl("Work-1-流程圖")')
   .Divide.my-10
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 任務流程圖
-    p.text-2xl.font-bold.text-gray-light.mb-4 Task Flow
-    p.leading-5 藉由Task Flow來檢視三位Persona的需求及目標流程，並確保操作直覺及解決與改善相關流程問題
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 任務流程圖
+    p.text-2xl.font-bold.text-gray.mb-4 Task Flow
+    p 藉由Task Flow來檢視三位Persona的需求及目標流程，並確保操作直覺及解決與改善相關流程問題
 .base
   img(:src='getImageUrl("Work-1-任務流程圖")')
   .Divide.my-10
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 線框稿
-    p.text-2xl.font-bold.text-gray-light.mb-4 Wireframes
-    p.leading-5 依照規劃整理的資訊框架以及功能設定，繪製了線框稿以作為初期的介面模擬
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 線框稿
+    p.text-2xl.font-bold.text-gray.mb-4 Wireframes
+    p 依照規劃整理的資訊框架以及功能設定，繪製了線框稿以作為初期的介面模擬
 
 img.w-screen(:src='getImageUrl("Work-1-線框稿")')
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 響應式介面
-    p.text-2xl.font-bold.text-gray-light.mb-4 Responsive UI
-    p.leading-5 在線框稿的框架下進行整體視覺風格與原則的設定 依使用介面、流程以及架構等，創建響應式介面的可用性安排與評估
-img.w-screen(:src='getImageUrl("Work-1-響應式介面")')
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 響應式介面
+    p.text-2xl.font-bold.text-gray.mb-4 Responsive UI
+    p 在線框稿的框架下進行整體視覺風格與原則的設定#[br]依使用介面、流程以及架構等，創建響應式介面的可用性安排與評估
+.relative.w-screen
+  img.w-screen(:src='getImageUrl("Work-1-響應式介面")')
+  button.rwd.absolute.border-2.border-blue.rounded-full.text-blue.text-xs.py-3.px-16(class='hover:bg-blue hover:text-white', @click='PrototypeLink') View Prototype
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue 可用性測試
-    p.text-2xl.font-bold.text-gray-light.mb-4 Usability Testing
-    p.leading-5 為了要確保Prototype有達成設定的目標需求，以及在相關設計均讓使用者帶來美好的使用介面與體驗#[br]特別從各角色類別中挑選一名受試者進行使用並反饋，做為日後實際上線的調整方向及重點
-.base.py-20
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 可用性測試
+    p.text-2xl.font-bold.text-gray.mb-4 Usability Testing
+    p 為了要確保Prototype有達成設定的目標需求，以及在相關設計均讓使用者帶來美好的使用介面與體驗#[br]特別從各角色類別中挑選一名受試者進行使用並反饋，做為日後實際上線的調整方向及重點
+.base.pb-20
   img.hidden(:src='getImageUrl("Work-1-可用性測試")', class='md:block')
   img(:src='getImageUrl("Work-1-可用性測試@3x")', class='md:hidden')
 
 #Visual.w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-white 視覺指南
+    p.text-2xl.font-bold.text-white(class='md:text-4xl') 視覺指南
     p.text-2xl.font-bold.text-gray-light.mb-4 Visual Guideline
-    p.text-white.leading-5 台灣盃與官方網站整體主視覺Logo、配色、字型等相關原則指南
+    p.text-white 台灣盃與官方網站整體主視覺Logo、配色、字型等相關原則指南
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
-    p.text-4xl.font-bold.text-blue.mb-4 Logo
-    p.leading-5 以水上運動與競技領域的風格角度，藉由簡潔有力的字體與動感流線的漸層色系，設計台灣盃賽事的主副Logo
+    p.text-2xl.font-bold.text-blue.mb-4(class='md:text-4xl') Logo
+    p 以水上運動與競技領域的風格角度，藉由簡潔有力的字體與動感流線的漸層色系，設計台灣盃賽事的主副Logo
 .base
-  img(:src='getImageUrl("Work-1-Logo")')
+  img.mx-auto(:src='getImageUrl("Work-1-Logo")', style='maxWidth:440px')
   .Divide.my-10
   .bg-white.text-left(class='md:text-center')
-    p.text-4xl.font-bold.text-blue 色彩計畫
-    p.text-2xl.font-bold.text-gray-light.mb-3.mt-1 Color Plan
-    p.text-gray.leading-5.font-light 藉由黑與白作為基礎色調，選用直覺聯想大海的深藍色作為主色調，並以湖水綠作為整體的視覺點綴色#[br]網站內藉幾種不同深淺的灰色，以區別主副標語與內容間的輕重排序
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 色彩計畫
+    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Color Plan
+    p.text-gray.font-light 藉由黑與白作為基礎色調，選用直覺聯想大海的深藍色作為主色調，並以湖水綠作為整體的視覺點綴色#[br]網站內藉幾種不同深淺的灰色，以區別主副標語與內容間的輕重排序
   //- .color-wrapper.flex.flex-wrap.mx-auto.justify-center
   //-   .color.mt-8(v-for='color in colors', :key='color.url')
   //-     img.mb-3.mx-5(:src='getImageUrl(color.url)')
@@ -245,34 +251,34 @@ img.w-screen(:src='getImageUrl("Work-1-響應式介面")')
   //-     .flex.items-center.ml-5
   //-       b.text-xs.text-gray-bg RGB&nbsp;
   //-       p.text-xs.text-gray-bg {{color.RGB}}
-  img.w-screen.mt-8(:src='getImageUrl("Work-1-色彩計畫@3x")')
+  img.mt-8.mx-auto.color-plan(:src='getImageUrl("Web-Work-1-Color Plan")')
 
   .Divide.my-10
 
 .base.text-center
   .bg-white.pb-10.text-left(class='md:text-center')
-    p.text-4xl.font-bold.text-blue 字型風格
-    p.text-2xl.font-bold.text-gray-light.mb-3.mt-1 Font Style
-    p.text-gray.leading-5.font-light DINPro字型生動的帶出運動競技類活動所欲呈現簡潔有力的動態感#[br]並藉由其中不同粗細的型態彰顯主副內容的區隔
+    p.text-2xl.font-bold.text-blue(class='md:text-4xl') 字型風格
+    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Font Style
+    p.text-gray.font-light DINPro字型生動的帶出運動競技類活動所欲呈現簡潔有力的動態感#[br]並藉由其中不同粗細的型態彰顯主副內容的區隔
   p.font-bold.text-3xl.text-gray-bg.font-dinpro DINPro
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end
-    p.text-4xl.font-black.font-dinpro Taiwanese Cup
+  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+    p.text-4xl.font-dinpro.font-black Taiwanese Cup
     p.text-xs Font size: 36px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end
-    p.text-3xl Taiwanese Cup
+  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+    p.text-3xl.font-dinpro.font-bold Taiwanese Cup
     p.text-xs Font size: 30px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end
-    p.text-2xl.font-light Taiwanese Cup
+  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+    p.text-2xl.font-dinpro.font-medium Taiwanese Cup
     p.text-xs Font size: 24px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end
-    p.text-xl.font-light Taiwanese Cup
+  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+    p.text-xl.font-dinpro Taiwanese Cup
     p.text-xs Font size: 20px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end
-    p.font-light Taiwanese Cup
+  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+    p.font-light.font-dinpro.font-light Taiwanese Cup
     p.text-xs Font size: 24px
 
 img.w-screen.mt-20(:src='getImageUrl("Work-1-頁尾大圖")')
-
+.h-20
 </template>
 
 <script>
@@ -324,7 +330,10 @@ export default {
         title: "工具-Tools",
         list: ["Adobe XD ", "Adobe Illustrator", " Adobe Photoshop"],
       },
-      { title: "時間表-Timeline", list: ["10 Days I 120 hours"] },
+      {
+        title: "時間表-Timeline",
+        list: ["10 Days I 120 hours"],
+      },
     ],
     hash: [
       {
@@ -343,10 +352,16 @@ export default {
       { title: "視覺指南", subtitle: "Visual Guideline", id: "Visual" },
     ],
     AnalysisLi: [
-      "Vertical Blue，簡稱VB，自潛指標性的垂直藍名人邀請賽 ",
-      "Asian Freediving Cup，簡稱AFC，鄰近台灣的自由潛水亞洲盃 ",
-      "Fédération Internationale de Natation (法語)，簡稱FINA，同為水上運動性質的國際游泳總會 ",
-      "Ultimate Fighting Championship，簡稱UFC，賽事以個人為主的終極格鬥冠軍賽",
+      ["Vertical Blue，簡稱VB", "自潛指標性的垂直藍名人邀請賽"],
+      ["Asian Freediving Cup，簡稱AFC", "鄰近台灣的自由潛水亞洲盃"],
+      [
+        "Fédération Internationale de Natation (法語)，簡稱FINA",
+        "同為水上運動性質的國際游泳總會",
+      ],
+      [
+        "Ultimate Fighting Championship，簡稱UFC",
+        "賽事以個人為主的終極格鬥冠軍賽",
+      ],
     ],
     AnalysisData1: [
       {
@@ -462,16 +477,14 @@ export default {
         img: "Work-1-人物誌-Patty",
       },
     ],
-    // colors: [
-    //   { RGB: "0,0,0", Hex: "#000000", url: "Work-1-色彩-黑色" },
-    //   { RGB: "22,145,194", Hex: "#1691C2", url: "Work-1-色彩-藍色" },
-    //   { RGB: "30,141,132", Hex: "#1E8D84", url: "Work-1-色彩-綠色" },
-    //   { RGB: "255,255,255", Hex: "#FFFFFF", url: "Work-1-色彩-白色" },
-    //   { RGB: "61,61,61", Hex: "#3D3D3D", url: "Work-1-色彩-深灰" },
-    //   { RGB: "112,112,112", Hex: "#707070", url: "Work-1-色彩-灰色" },
-    //   { RGB: "168,168,168", Hex: "#A8A8A8", url: "Work-1-色彩-淺灰" },
-    // ],
   }),
+  methods: {
+    PrototypeLink() {
+      window.open(
+        "https://xd.adobe.com/view/3a589399-8aac-43fb-972f-463c7ed3c0a9-6f0b/screen/3a39abbe-b5d7-48e3-afbb-b4949a39717a"
+      );
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -489,5 +502,23 @@ export default {
   img {
     width: 100px;
   }
+}
+.rwd {
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  @media (max-width: 767px) {
+    bottom: 20px;
+  }
+}
+
+.color-plan {
+  width: 550px;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+}
+.menu:hover {
+  border-bottom: 2px solid #707070;
 }
 </style>
