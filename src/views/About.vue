@@ -13,7 +13,7 @@
       p.text-xs.font-light.mt-4 過去11年專職於服飾配件類的產品設計，期間幾度參與品牌線上服務 與銷售的協作，對UI/UX設計產生強烈興趣，並逐步累積相關經驗#[br]#[br]將產品設計以使用者需求為出發的設計思維，及對流行趨勢保持專注 的工作習性，加上整合內外部跨單位的溝通經驗，轉化於UI/UX設計 中完整展現，創造美觀及貼近需求的數位產品
 
 #detail.base
-  img.cursor-pointer.transition(:src='getImageUrl(`${isMobile ? "IOS" : "Web"}-About-Card-${state}@2x`)', @click='state = state === "Before" ? "After" : "Before" ', :class='[state]')
+  img.cursor-pointer.transition(:src='getImageUrl(`${isMobile ? "iOS" : "Web"}-About-Card-${state}@2x`)', @click='state = state === "Before" ? "After" : "Before" ', :class='[state]')
 </template>
 
 <script>
