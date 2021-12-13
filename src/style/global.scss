@@ -13,10 +13,12 @@ pre {
 }
 
 body,
-p {
-  margin: 0;
+p,
+span,
+li {
   color: #000000;
   line-height: 1.5;
+  margin: 0;
 }
 
 header,

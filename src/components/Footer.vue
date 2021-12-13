@@ -6,7 +6,7 @@ footer.bg-black
     a.social.flex.justify-center.items-center.w-full.mb-6(class='md:mb-0 md:justify-between')
       img.mx-4.cursor-pointer(v-for='item in socialList', :key='item.key', :alt="item.key", :src="getImageUrl(item.key)", @click='href(item)')
     .menu.flex.justify-end.items-center.hidden(class='md:flex md:w-2/6')
-      p.mx-6.text-white.cursor-pointer(v-for='item in menuList', :key='item.name', @click='goTo(item)') {{item.name}}
+      p.mx-10.text-white.cursor-pointer(v-for='item in menuList', :key='item.name', @click='goTo(item)') {{item.name}}
   transition(name="fade")
     Contact(v-if='ContactShow', @close='ContactShow = false')
 
@@ -30,7 +30,7 @@ export default {
   methods: {
     href({ key, url }) {
       if (key === "mail") {
-        window.open(`mailto:${url}`);
+        this.ContactShow = true;
       } else {
         window.open(url);
       }

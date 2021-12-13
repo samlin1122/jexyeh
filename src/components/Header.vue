@@ -4,7 +4,7 @@ header.fixed.flex.items-center.justify-between.w-full.shadow-lg.z-30.bg-white(cl
   router-link.logo(:to="{ name: 'Home' }", :class='{ "opacity-0" : $route.path.includes("project")}')
     img(:src='getImageUrl("LOGO")')
   .item-wrapper.hidden.items-center.justify-between(class='md:flex')
-    p.mx-4.cursor-pointer(
+    p.mx-10.cursor-pointer(
       v-for='item in menuList', :key='item.name', @click='goTo(item)'
       :class='{ other : ($route.name==="TaiwaneseCup" || $route.name==="Accessories") }'
       class='hover:text-blue'
@@ -48,16 +48,12 @@ header {
     width: 50px;
   }
   .arrow {
-    width: 43px;
-    height: 43px;
+    width: 66px;
+    height: 66px;
     background-size: cover;
     background-image: url("@/assets/images/返回箭頭-btn.png");
     &:hover {
       background-image: url("@/assets/images/返回箭頭-btn (Hover State).png");
-    }
-    @media (max-width: 767px) {
-      width: 66px;
-      height: 66px;
     }
   }
   .item-wrapper {
@@ -71,7 +67,8 @@ header {
 }
 .menu {
   &-icon {
-    width: 50px;
+    width: 71px;
+    height: 80px;
     object-fit: cover;
   }
 }

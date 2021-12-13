@@ -5,7 +5,7 @@
   Carousel
     Slide(v-for='type in typeList', :key='type.key')
       img.w-screen.selfic(:alt="type.key", :src='getImageUrl(`${isMobile ? "iOS" : "Web"}-LP-${type.image}@2x`)')
-      .absolute.mr-8.text-content(:class='type.key')
+      .absolute.mr-8.text-content.text-left(:class='type.key')
         p.text-xl Hi There,
         p.text-6xl.font-bold.whitespace-nowrap.tracking-tighter I am Jex
         p.text-xl.font-light.whitespace-pre-wrap(class='md:whitespace-nowrap') {{ type.name }}

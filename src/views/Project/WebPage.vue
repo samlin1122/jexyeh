@@ -3,25 +3,25 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
 .w-screen.bg-white.text-left.pt-20(class='md:text-center')
   .base
     p.text-4xl.font-bold.text-blue 個人作品集網站
-    p.text-gray.mt-4 由於過往設計作品皆以服飾配件類商品為主，此次為統整與展示UI/UX及視覺相關作品#[br]特以規劃個人作品集網站並完成上線供紀錄與瀏覽，並從其中的規劃、設計及前端合作上累積實務經驗
+    p.mt-4 由於過往設計作品皆以服飾配件類商品為主，此次為統整與展示UI/UX及視覺相關作品#[br]特以規劃個人作品集網站並完成上線供紀錄與瀏覽，並從其中的規劃、設計及前端合作上累積實務經驗
 
 .base.py-20
   .Divide.mb-2
   .part-2.flex.items-center.flex-col(class='md:flex-wrap md:flex-row')
     .part-2-section.mt-8.pr-10.w-full(v-for='item in part2', class='md:w-1/2')
       p.text-2xl.font-bold.text-blue.mb-3 {{item.title}}
-      p.text-gray.font-light(v-if='item.describe') {{item.describe}}
-      li.text-gray.font-light(v-if='item.list', v-for='list in item.list') {{list}}
+      p(v-if='item.describe') {{item.describe}}
+      li(v-if='item.list', v-for='list in item.list') {{list}}
   .Divide.my-10
   .part-3.flex
     .left.pr-4(class='w-1/2')
       p.text-2xl.font-bold.text-blue.mb-3 任務-Role
-      p.text-gray.font-light(v-for='item in part3[0]') {{item}}
+      p(v-for='item in part3[0]') {{item}}
     .right(class='w-1/2')
       p.text-2xl.font-bold.text-blue.mb-3 工具-Tools
-      p.text-gray.font-light(v-for='item in part3[1]') {{item}}
+      p(v-for='item in part3[1]') {{item}}
       p.text-2xl.font-bold.text-blue.mb-3.mt-8 時間表-Timeline
-      p.text-gray.font-light 10 Days I 120 hours
+      p 10 Days I 120 hours
 
 .w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
@@ -31,31 +31,37 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
 .base
   .bg-white.text-left.py-20(class='md:text-center')
     p.text-4xl.font-bold.text-blue 站點地圖 
-    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Sitemap
-    p.text-gray.font-light 創造站點地圖可直觀的確認整體的內容架構及佈局邏輯
+    p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Sitemap
+    p 創造站點地圖可直觀的確認整體的內容架構及佈局邏輯
   img.mx-auto(:src='getImageUrl("Work-2-站點地圖")', class='w-3/5')
   .Divide.my-10
 
 .base
   .bg-white.pb-20.text-left(class='md:text-center')
     p.text-4xl.font-bold.text-blue 流程圖
-    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Flow Chart
-    p.text-gray.font-light 接續以流程圖來釐清達成需求目標流程上的步驟及程序，同步設定並檢驗使用者在操作上將面臨相關的功能狀態
+    p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Flow Chart
+    p 接續以流程圖來釐清達成需求目標流程上的步驟及程序，同步設定並檢驗使用者在操作上將面臨相關的功能狀態
   img.mx-auto(:src='getImageUrl("Work-2-流程圖")', class='w-3/5')
   .Divide.my-10
 
 .base
   .bg-white.pb-20.text-left(class='md:text-center')
     p.text-4xl.font-bold.text-blue 線框稿
-    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Wireframes
-    p.text-gray.font-light 依照規劃整理的資訊框架以及功能設定，繪製了線框稿以作為初期的介面模擬
+    p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Wireframes
+    p 依照規劃整理的資訊框架以及功能設定，繪製了線框稿以作為初期的介面模擬
 img.w-screen(:src='getImageUrl("Work-2-線框稿")')
 .h-20
 .w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
     p.text-4xl.font-bold.text-white 介面設計
     p.text-2xl.font-bold.text-gray-light.mb-4 UI Design
-    p.text-white 創建能表現個人特色的介面風格，包含相關色彩運用及元素的結合#[br]簡潔的排版配置以留白、色塊點綴與大量滿版圖做貫穿#[br]並以黑白色調與冷暖不同的灰階色系，讓整體視覺帶出具有層次的豐富性
+    p.text-white 創建能表現個人特色的介面風格，包含相關色彩運用及元素的結合
+      span.text-white(v-if='isMobile') ，
+      span(v-else) #[br]
+      span.text-white 簡潔的排版配置以留白、色塊點綴與大量滿版圖做貫穿
+      span.text-white(v-if='isMobile') ，
+      span(v-else) #[br]
+      span.text-white 並以黑白色調與冷暖不同的灰階色系，讓整體視覺帶出具有層次的豐富性
 
 .base
   .items-center.justify-between.mt-8.mb-4(class='md:flex')
@@ -77,25 +83,19 @@ img.w-screen(:src='getImageUrl("Work-2-介面設計-2")', class='md:hidden')
 .base.mt-10
   .bg-white.text-left.pb-10(class='md:text-center')
     p.text-4xl.font-bold.text-blue 色彩計畫
-    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Color Plan
-    p.text-gray.font-light 在黑與白的基礎色調上，以略帶金屬色調的漸層色塊點綴整體視覺#[br]同樣以冷暖不同的灰階色系，讓整體帶出具有層次的豐富性，並區別主副標語與內容間的輕重排序
-  //- .color-wrapper.flex.flex-wrap.mx-auto
-  //-   .color.mt-8(v-for='color in colors', :key='color.url')
-  //-     img.mb-3.mx-5(:src='getImageUrl(color.url)')
-  //-     .flex.items-center.ml-5
-  //-       b.text-xs.text-gray-bg Hex&nbsp;
-  //-       p.text-xs.text-gray-bg {{color.Hex}}
-  //-     .flex.items-center.ml-5
-  //-       b.text-xs.text-gray-bg RGB&nbsp;
-  //-       p.text-xs.text-gray-bg {{color.RGB}}
+    p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Color Plan
+    p 在黑與白的基礎色調上，以略帶金屬色調的漸層色塊點綴整體視覺
+      span.text-white(v-if='isMobile') ，
+      span(v-else) #[br]
+      span.text-white 同樣以冷暖不同的灰階色系，讓整體帶出具有層次的豐富性，並區別主副標語與內容間的輕重排序
   img.mx-auto.color-plan(:src='getImageUrl("Web-Work-2-Color Plan")')
   .Divide.my-10
 
 .base.text-center
   .bg-white.pb-10.text-left(class='md:text-center')
     p.text-4xl.font-bold.text-blue 字型風格
-    p.text-2xl.font-bold.text-gray.mb-3.mt-1 Font Style
-    p.text-gray.font-light 經典的Helvetica字型能讓使用者感到熟悉及畫面協調，進而將視覺焦點放在網站內容的本身而不受干擾
+    p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Font Style
+    p 經典的Helvetica字型能讓使用者感到熟悉及畫面協調，進而將視覺焦點放在網站內容的本身而不受干擾
   p.font-bold.text-3xl.text-gray-bg Helvetica
   .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
     p.text-40.font-bold JexYeh
@@ -104,7 +104,7 @@ img.w-screen(:src='getImageUrl("Work-2-介面設計-2")', class='md:hidden')
     p.text-32 JexYeh
     p.text-xs Font size: 32px
   .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-2xl.font-light JexYeh
+    p.font-light.text-2xl JexYeh
     p.text-xs Font size: 24px
 
 img.w-screen.mt-20(:src='getImageUrl("Work-2-頁尾大圖")')
@@ -160,16 +160,6 @@ export default {
       ],
       ["Adobe XD ", "Adobe Illustrator", " Adobe Photoshop"],
     ],
-    // colors: [
-    //   { RGB: "0,0,0", Hex: "#000000", url: "Work-2-色彩-黑色" },
-    //   { RGB: "255,255,255", Hex: "#FFFFFF", url: "Work-2-色彩-白色" },
-    //   { RGB: "213,208,172", Hex: "#D5D0AC", url: "Work-2-色彩-米色" },
-    //   { RGB: "27,65,103", Hex: "#1B4167", url: "Work-2-色彩-藍色" },
-    //   { RGB: "112,112,112", Hex: "#707070", url: "Work-2-色彩-冷深灰" },
-    //   { RGB: "168,168,168", Hex: "#A8A8A8", url: "Work-2-色彩-冷淺灰" },
-    //   { RGB: "90,91,86", Hex: "#5A5B56", url: "Work-2-色彩-暖深灰" },
-    //   { RGB: "180,181,172", Hex: "#B4B5AC", url: "Work-2-色彩-暖淺灰" },
-    // ],
   }),
 };
 </script>
@@ -196,9 +186,10 @@ export default {
   }
 }
 .color-plan {
-  width: 550px;
-  @media (min-width: 768px) {
-    width: 100%;
+  width: 100%;
+  padding: 0 55px;
+  @media (max-width: 767px) {
+    padding: 0;
   }
 }
 </style>
