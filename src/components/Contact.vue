@@ -52,7 +52,7 @@ export default {
     },
     open(boo) {
       if (boo) {
-        window.open("https://www.cakeresume.com/chun-chuan-yeh");
+        window.open("https://www.cakeresume.com/jexyeh");
       }
     },
   },
