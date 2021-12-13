@@ -31,6 +31,11 @@ const routes = [
         name: "Accessories",
         component: () => import('@/views/Project/Accessories.vue'),
       },
+
+      {
+        path: "*",
+        redirect: "/"
+      }
     ]
   }
 ]

@@ -30,7 +30,7 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
           p.text-gray.font-light(v-for='list in part3[2].list') {{list}}
 .w-screen.bg-black
   .base.py-20.flex.flex-wrap.items-center.justify-between
-    a.menu.flex.items-center.justify-between.border-b.border-gray.pb-8.mb-8.w-full(v-for='item in hash', class='md:w-2/5', :href='`#${item.id}`')
+    .menu.flex.items-center.justify-between.border-b.border-gray.pb-8.mb-8.w-full(v-for='item in hash', class='md:w-2/5', @click='anchor(item.id)')
       div
         p.text-3xl.text-white {{item.title}}
         p.text-blue {{item.subtitle}}
@@ -213,8 +213,8 @@ img.w-screen(:src='getImageUrl("Work-1-線框稿")')
     p.text-2xl.font-bold.text-gray.mb-4 Responsive UI
     p 在線框稿的框架下進行整體視覺風格與原則的設定#[br]依使用介面、流程以及架構等，創建響應式介面的可用性安排與評估
 .relative.w-screen
-  img.w-screen(:src='getImageUrl("Work-1-響應式介面")')
-  button.rwd.absolute.border-2.border-blue.rounded-full.text-blue.text-xs.py-3.px-16(class='hover:bg-blue hover:text-white', @click='PrototypeLink') View Prototype
+  img.w-screen(:src='getImageUrl("Work-1-響應式介面@3x")')
+  button.rwd.absolute.border-2.border-blue.rounded-full.text-blue.text-xs.py-3.px-16.whitespace-nowrap(class='hover:bg-blue hover:text-white', @click='PrototypeLink') View Prototype
 
 .w-screen.bg-white.text-left.py-20(class='md:text-center')
   .base
@@ -484,6 +484,14 @@ export default {
         "https://xd.adobe.com/view/3a589399-8aac-43fb-972f-463c7ed3c0a9-6f0b/screen/3a39abbe-b5d7-48e3-afbb-b4949a39717a"
       );
     },
+    anchor(id) {
+      const target = document.getElementById(id);
+      const top = this.isMobile ? target.offsetTop - 90 : target.offsetTop;
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    },
   },
 };
 </script>
@@ -518,10 +526,12 @@ export default {
     width: 100%;
   }
 }
-.menu:hover {
-  border-bottom-width: 2px;
-  img {
-    transform: scale(1.1);
+.menu {
+  &:hover {
+    border-bottom-width: 2px;
+    img {
+      transform: scale(1.1);
+    }
   }
 }
 </style>

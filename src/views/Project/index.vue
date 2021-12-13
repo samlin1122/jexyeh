@@ -1,4 +1,5 @@
 <template lang="pug">
+.pt-90-mobile(class='md:hidden')
 router-view
 .flex
   p.text-white.text-center.cursor-pointer.py-8.bg-gray.transition(class='w-1/2 hover:bg-white hover:text-gray-bg', @click='projectLink("prev")') Previous Project
@@ -41,4 +42,8 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.pt-90-mobile {
+  padding-top: 90px;
+}
+</style>

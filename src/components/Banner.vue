@@ -4,7 +4,8 @@
     p.text-xs.whitespace-nowrap(v-for='(type, index) in typeList', :key='type.key', :class='{ "font-bold" : (active === index), "text-gray-light": (active !== index)}') {{ type.name }}
   Carousel
     Slide(v-for='type in typeList', :key='type.key')
-      img.w-screen.selfic(:alt="type.key", :src='getImageUrl(`${isMobile ? "IOS" : "Web"}-LP-${type.image}@2x`)')
+      img.w-screen.selfic(v-if='isMobile', :alt="type.key", :src='getImageUrl(`IOS-LP-${type.image}@2x`)')
+      img.w-screen.selfic(v-else ,:alt="type.key", :src='getImageUrl(`Web-LP-${type.image}@2x`)')
       .absolute.mr-8.text-content(:class='type.key')
         p.text-xl Hi There,
         p.text-6xl.font-bold.whitespace-nowrap.tracking-tighter I am Jex
