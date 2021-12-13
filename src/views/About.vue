@@ -5,7 +5,7 @@
 
   //- desktop
   .relative
-    img.w-screen.selfic(:src='getImageUrl(`${isMobile ? "IOS" : "Web"}-About@2x`)')
+    img.w-screen.selfic(:src='getImageUrl(`${isMobile ? "iOS" : "Web"}-About@2x`)')
     .absolute.mr-8.text-content
       p.text-xl Hi There,
       p.text-6xl.font-bold.whitespace-nowrap.tracking-tighter I am Jex
