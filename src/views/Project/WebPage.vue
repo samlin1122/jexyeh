@@ -1,15 +1,18 @@
 <template lang="pug">
 img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
-.w-screen.bg-white.text-left.pt-20(class='md:text-center')
+.w-screen.bg-white.text-left.pt-10(class='md:text-center')
   .base
     p.text-4xl.font-bold.text-blue 個人作品集網站
-    p.mt-4 由於過往設計作品皆以服飾配件類商品為主，此次為統整與展示UI/UX及視覺相關作品#[br]特以規劃個人作品集網站並完成上線供紀錄與瀏覽，並從其中的規劃、設計及前端合作上累積實務經驗
+    p.mt-4 由於過往設計作品皆以服飾配件類商品為主，此次為統整與展示UI/UX及視覺相關作品
+      span(v-if='isMobile') ，
+      span(v-else) #[br]
+      span 特以規劃個人作品集網站並完成上線供紀錄與瀏覽，並從其中的規劃、設計及前端合作上累積實務經驗
 
 .base.py-20
   .Divide.mb-2
   .part-2.flex.items-center.flex-col(class='md:flex-wrap md:flex-row')
     .part-2-section.mt-8.pr-10.w-full(v-for='item in part2', class='md:w-1/2')
-      p.text-2xl.font-bold.text-blue.mb-3 {{item.title}}
+      p.text-2xl.font-bold.text-blue.my-5(class='md:mb-3') {{item.title}}
       p(v-if='item.describe') {{item.describe}}
       li(v-if='item.list', v-for='list in item.list') {{list}}
   .Divide.my-10
@@ -29,7 +32,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
     p.text-2xl.font-bold.text-gray-light Information Architecture
 
 .base
-  .bg-white.text-left.py-20(class='md:text-center')
+  .bg-white.text-left.pt-20.pb-10(class='md:text-center')
     p.text-4xl.font-bold.text-blue 站點地圖 
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Sitemap
     p 創造站點地圖可直觀的確認整體的內容架構及佈局邏輯
@@ -37,7 +40,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
   .Divide.my-10
 
 .base
-  .bg-white.pb-20.text-left(class='md:text-center')
+  .bg-white.text-left.pt-20.pb-10(class='md:text-center')
     p.text-4xl.font-bold.text-blue 流程圖
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Flow Chart
     p 接續以流程圖來釐清達成需求目標流程上的步驟及程序，同步設定並檢驗使用者在操作上將面臨相關的功能狀態
@@ -45,7 +48,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
   .Divide.my-10
 
 .base
-  .bg-white.pb-20.text-left(class='md:text-center')
+  .bg-white.text-left.pt-20.pb-10(class='md:text-center')
     p.text-4xl.font-bold.text-blue 線框稿
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Wireframes
     p 依照規劃整理的資訊框架以及功能設定，繪製了線框稿以作為初期的介面模擬
@@ -81,7 +84,7 @@ img.w-screen(:src='getImageUrl("Work-2-介面設計-2")', class='md:hidden')
     p.text-4xl.font-bold.text-white 視覺指南
     p.text-2xl.font-bold.text-gray-light Visual Guideline
 .base.mt-10
-  .bg-white.text-left.pb-10(class='md:text-center')
+  .bg-white.text-left(class='md:text-center')
     p.text-4xl.font-bold.text-blue 色彩計畫
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Color Plan
     p 在黑與白的基礎色調上，以略帶金屬色調的漸層色塊點綴整體視覺
@@ -96,16 +99,17 @@ img.w-screen(:src='getImageUrl("Work-2-介面設計-2")', class='md:hidden')
     p.text-4xl.font-bold.text-blue 字型風格
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Font Style
     p 經典的Helvetica字型能讓使用者感到熟悉及畫面協調，進而將視覺焦點放在網站內容的本身而不受干擾
-  p.font-bold.text-3xl.text-gray-bg Helvetica
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-40.font-bold JexYeh
-    p.text-xs Font size: 40px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-32 JexYeh
-    p.text-xs Font size: 32px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.font-light.text-2xl JexYeh
-    p.text-xs Font size: 24px
+  .color-plan
+    p.font-bold.text-3xl.text-gray-bg Helvetica
+    .flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.text-40.font-bold JexYeh
+      p.text-xs Font size: 40px
+    .flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.text-32 JexYeh
+      p.text-xs Font size: 32px
+    .flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.font-light.text-2xl JexYeh
+      p.text-xs Font size: 24px
 
 img.w-screen.mt-20(:src='getImageUrl("Work-2-頁尾大圖")')
 .h-20
@@ -171,9 +175,6 @@ export default {
   img {
     width: 100px;
   }
-}
-.font-style {
-  max-width: 550px;
 }
 .text {
   &-40 {

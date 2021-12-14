@@ -1,9 +1,15 @@
 <template lang="pug">
 img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
 .base.py-20
-  .part-1.text-left.pb-10(class='md:text-center')
+  .part-1.text-left(class='md:text-center')
     p.text-2xl.font-bold.text-blue.mb-3(class='md:text-4xl') Taiwanese Cup#[br]台灣盃自由潛水深度賽
-    p 台灣盃深度賽為台灣第一場自由潛水深度賽#[br]是由意潛(One Freediving)與女子的海(Ms. Ocean)，於2021年3月24-25兩天在小琉球共同主辦#[br]過往受限台灣海域深度、洋流及法規等問題，皆以泳池賽的舉辦為主，此次主辦第一屆深度賽更顯難能可貴
+    p 台灣盃深度賽為台灣第一場自由潛水深度賽
+      span(v-if='isMobile') ，
+      span(v-else) #[br]
+      span 是由意潛(One Freediving)與女子的海(Ms. Ocean)，於2021年3月24-25兩天在小琉球共同主辦
+      span(v-if='isMobile') ，
+      span(v-else) #[br]
+      span 過往受限台灣海域深度、洋流及法規等問題，皆以泳池賽的舉辦為主，此次主辦第一屆深度賽更顯難能可貴
   .Divide.mt-10.mb-2
   .mt-8(class='md:flex')
     .part-2.flex.flex-col.justify-between.text-left(class=' md:w-1/2')
@@ -62,7 +68,7 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
   .flex.justify-around.flex-col(class='md:flex-row')
     div.w-full.mb-8(v-for='item in AnalysisData2', class='md:w-5/12 md:mb-0')
       p.font-bold.text-2xl.text-blue {{item.title}}
-      p.font-bold.text-xl.mb-8 {{item.subtitle}}
+      p.font-bold.text-xl.text-gray-light.mb-8 {{item.subtitle}}
       p.mb-8(v-for='content in item.content') {{content}}
       li.font-bold(v-for='list in item.list') {{list}}
 
@@ -99,7 +105,7 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
     img.w-full.mb-8(class='md:w-1/2 md:mb-0', :src='getImageUrl("Work-1-訪談-人員")')
   .Divide.my-10
 
-.w-screen.bg-white.text-left.pb-20(class='md:text-center')
+.w-screen.bg-white.text-left(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 訪談研究
     p.text-2xl.font-bold.mb-4.text-gray-light Interviews Research
@@ -110,7 +116,7 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
 
 img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
 
-#Persona.w-screen.bg-white.text-left.pt-20.pb-10(class='md:text-center')
+#Persona.w-screen.bg-white.text-left.pt-20(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 人物誌
     p.text-2xl.font-bold.mb-4.text-gray-light Persona
@@ -172,7 +178,6 @@ img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
       span.font-normal {{item.problem}}
     p.font-bold.leading-8 目標：
       span.font-normal {{item.target}}
-    .Divide.my-10
 
 #Information.w-screen.bg-blue.text-left.py-20(class='md:text-center')
   .base
@@ -183,7 +188,7 @@ img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
       span(v-else) #[br]
       span.text-white 將相關資訊及對應的功能進行統整分類及組織管理的架構設定，標記出使用導航上的功能選單以便釐清整體的脈絡
 
-.w-screen.bg-white.text-center.py-20(class='md:text-center')
+.w-screen.bg-white.text-center.pt-20.pb-10(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 站點地圖
     p.text-2xl.font-bold.mb-4.text-gray-light Sitemap
@@ -196,7 +201,7 @@ img.base.w-full.mb-20(:src='getImageUrl("Work-1-站點地圖")')
     p.text-2xl.font-bold.text-white(class='md:text-4xl') 互動設計
     p.text-2xl.font-bold.text-gray-light Interaction Design
 
-.w-screen.bg-white.text-left.py-20(class='md:text-center')
+.w-screen.bg-white.text-left.pt-20.pb-10(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 流程圖
     p.text-2xl.font-bold.mb-4.text-gray-light Flow Chart
@@ -205,7 +210,7 @@ img.base.w-full.mb-20(:src='getImageUrl("Work-1-站點地圖")')
   img(:src='getImageUrl("Work-1-流程圖")')
   .Divide.my-10
 
-.w-screen.bg-white.text-left.py-20(class='md:text-center')
+.w-screen.bg-white.text-left.pb-10(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 任務流程圖
     p.text-2xl.font-bold.mb-4.text-gray-light Task Flow
@@ -214,7 +219,7 @@ img.base.w-full.mb-20(:src='getImageUrl("Work-1-站點地圖")')
   img(:src='getImageUrl("Work-1-任務流程圖")')
   .Divide.my-10
 
-.w-screen.bg-white.text-left.py-20(class='md:text-center')
+.w-screen.bg-white.text-left.pb-10(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 線框稿
     p.text-2xl.font-bold.mb-4.text-gray-light Wireframes
@@ -222,7 +227,7 @@ img.base.w-full.mb-20(:src='getImageUrl("Work-1-站點地圖")')
 
 img.w-screen(:src='getImageUrl("Work-1-線框稿")')
 
-.w-screen.bg-white.text-left.py-20(class='md:text-center')
+.w-screen.bg-white.text-left.pt-10(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 響應式介面
     p.text-2xl.font-bold.mb-4.text-gray-light Responsive UI
@@ -234,7 +239,7 @@ img.w-screen(:src='getImageUrl("Work-1-線框稿")')
   img.w-screen(:src='getImageUrl("Work-1-響應式介面@3x")')
   button.rwd.absolute.border-2.border-blue.rounded-full.text-blue.text-xs.py-3.px-16.whitespace-nowrap(class='hover:bg-blue hover:text-white', @click='PrototypeLink') View Prototype
 
-.w-screen.bg-white.text-left.py-20(class='md:text-center')
+.w-screen.bg-white.text-left.pt-10(class='md:text-center')
   .base
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 可用性測試
     p.text-2xl.font-bold.mb-4.text-gray-light Usability Testing
@@ -267,34 +272,35 @@ img.w-screen(:src='getImageUrl("Work-1-線框稿")')
       span(v-else) #[br]
       span.text-white 網站內藉幾種不同深淺的灰色，以區別主副標語與內容間的輕重排序
 
-  img.mt-8.mx-auto.color-plan(:src='getImageUrl("Web-Work-1-Color Plan")')
+  img.mx-auto.color-plan(:src='getImageUrl("Web-Work-1-Color Plan")')
 
   .Divide.my-10
 
 .base.text-center
-  .bg-white.pb-10.text-left(class='md:text-center')
+  .bg-white.text-left(class='md:text-center')
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 字型風格
     p.text-2xl.font-bold.mb-4.text-gray-light Font Style
     p DINPro字型生動的帶出運動競技類活動所欲呈現簡潔有力的動態感
       span.text-white(v-if='isMobile') ，
       span(v-else) #[br]
       span.text-white 並藉由其中不同粗細的型態彰顯主副內容的區隔
-  p.font-bold.text-3xl.text-gray-bg.font-dinpro DINPro
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-4xl.font-dinpro.font-black Taiwanese Cup
-    p.text-xs Font size: 36px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-3xl.font-dinpro.font-bold Taiwanese Cup
-    p.text-xs Font size: 30px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-2xl.font-dinpro.font-medium Taiwanese Cup
-    p.text-xs Font size: 24px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.text-xl.font-dinpro Taiwanese Cup
-    p.text-xs Font size: 20px
-  .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
-    p.font-light.font-dinpro Taiwanese Cup
-    p.text-xs Font size: 16px
+  .color-plan
+    p.font-bold.text-3xl.text-gray-bg.font-dinpro DINPro
+    .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.text-4xl.font-dinpro.font-black Taiwanese Cup
+      p.text-xs Font size: 36px
+    .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.text-3xl.font-dinpro.font-bold Taiwanese Cup
+      p.text-xs Font size: 30px
+    .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.text-2xl.font-dinpro.font-medium Taiwanese Cup
+      p.text-xs Font size: 24px
+    .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.text-xl.font-dinpro Taiwanese Cup
+      p.text-xs Font size: 20px
+    .font-style.flex.justify-between.border-b.pb-1.mt-5.mx-auto.items-end.h-14(class='md:h-16')
+      p.font-light.font-dinpro Taiwanese Cup
+      p.text-xs Font size: 16px
 
 img.w-screen.mt-20(:src='getImageUrl("Work-1-頁尾大圖")')
 .h-20

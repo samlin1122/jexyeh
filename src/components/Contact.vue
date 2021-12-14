@@ -1,5 +1,5 @@
 <template lang="pug">
-#contact.fixed.inset-0.z-20.bg-black
+#contact.fixed.inset-0.z-30.bg-black
   img.cursor-pointer.icon-close.absolute.z-20(alt='close', :src='getImageUrl("Contact-叉叉-btn")', @click='$emit("close")')
   .base.relative.h-screen.bg-center.bg-no-repeat.bg-contain.flex.flex-col.items-center.justify-center
     .contact-detail.absolute
@@ -68,6 +68,7 @@ export default {
   }
   .base {
     background-image: url("@/assets/images/背景icon底圖-黑底.png");
+    background-size: cover;
     @media (max-width: 767px) {
       background-image: url("@/assets/images/iOS-Contact@3x.png");
     }
