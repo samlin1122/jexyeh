@@ -84,7 +84,7 @@ img.w-screen(:src='getImageUrl("Work-1-頁首大圖")')
       span(v-else) #[br]
       span.text-white 就競品網站內容及對整體架構的假設下，設定了相關提問條件情境及問題進行訪談調查：
 
-.base.bg-white.py-20
+.base.bg-white.pt-20
   .flex.flex-col-reverse(class='md:flex-row')
     .pr-10.w-full(class='md:w-1/2')
       p.font-bold.leading-8 人員：
@@ -121,9 +121,9 @@ img.w-screen(:src='getImageUrl("Work-1-Interview-Web@2x")')
     p.text-2xl.font-bold.text-blue(class='md:text-4xl') 人物誌
     p.text-2xl.font-bold.mb-4.text-gray-light Persona
     p 藉由訪談研究的結果建構出三個人物誌角色，並模擬其於賽事資訊相關的對應需求
-      span.text-white(v-if='isMobile') ，
+      span(v-if='isMobile') ，
       span(v-else) #[br]
-      span.text-white 現行條件上將會遇到的難題，以及官網於架構功能上將解決的目標任務
+      span 現行條件上將會遇到的難題，以及官網於架構功能上將解決的目標任務
 
 .base.bg-white.pb-20.justify-between.hidden(class='md:flex')
   .w-30(v-for='item in PersonaData')

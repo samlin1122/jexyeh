@@ -11,7 +11,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
 .base.py-20
   .Divide.mb-2
   .part-2.flex.items-center.flex-col(class='md:flex-wrap md:flex-row')
-    .part-2-section.mt-8.pr-10.w-full(v-for='item in part2', class='md:w-1/2')
+    .part-2-section.mt-8.w-full(v-for='item in part2', class='md:w-1/2 md:pr-10')
       p.text-2xl.font-bold.text-blue.my-5(class='md:mb-3') {{item.title}}
       p(v-if='item.describe') {{item.describe}}
       li(v-if='item.list', v-for='list in item.list') {{list}}
@@ -40,7 +40,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
   .Divide.my-10
 
 .base
-  .bg-white.text-left.pt-20.pb-10(class='md:text-center')
+  .bg-white.text-left.py-10(class='md:text-center')
     p.text-4xl.font-bold.text-blue 流程圖
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Flow Chart
     p 接續以流程圖來釐清達成需求目標流程上的步驟及程序，同步設定並檢驗使用者在操作上將面臨相關的功能狀態
@@ -48,7 +48,7 @@ img.w-screen(:src='getImageUrl("Work-2-頁首大圖")')
   .Divide.my-10
 
 .base
-  .bg-white.text-left.pt-20.pb-10(class='md:text-center')
+  .bg-white.text-left.py-10(class='md:text-center')
     p.text-4xl.font-bold.text-blue 線框稿
     p.text-2xl.font-bold.mb-3.mt-1.text-gray-light Wireframes
     p 依照規劃整理的資訊框架以及功能設定，繪製了線框稿以作為初期的介面模擬
