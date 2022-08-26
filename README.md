@@ -1,7 +1,6 @@
-# Vue 3 + Vite
+# [jexyeh's personal website](https://jex-yeh.de.r.appspot.com/)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Help my friend which is a UI/UX designer to make a portfolio website.
 
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- This project was made by Vue3 + Vite but did not use Vue3 script setup.
+- Use Tailwind.css for rapid development and use gae to auto-deploy.
